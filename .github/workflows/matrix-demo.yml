@@ -4,20 +4,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  linux-docker:
-    runs-on: ubuntu-latest
+  docker:
+    strategy:
+      matrix:  
+        os: [ubuntu-latest, ubuntu-20.04, windows-latest]
+        images: [hello-world, alpine]
+    runs-on: ${{ matrix.os }}
     steps:
     - name: Docker Info
       run: docker info
-
+  
     - name: Docker hello world
-      run: docker run hello-world
-
-  windows-docker:
-    runs-on: windows-latest
-    steps:
-    - name: Docker Info
-      run: docker info
-
-    - name: Docker hello world
-      run: docker run hello-world
+      run: docker run ${{ matrix.images }}
