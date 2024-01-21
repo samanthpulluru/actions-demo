@@ -1,0 +1,23 @@
+name: Matrix demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  linux-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Docker Info
+      run: docker info
+
+    - name: Docker hello world
+      run: docker run hello-world
+
+  windows-docker:
+    runs-on: windows-latest
+    steps:
+    - name: Docker Info
+      run: docker info
+
+    - name: Docker hello world
+      run: docker run hello-world
