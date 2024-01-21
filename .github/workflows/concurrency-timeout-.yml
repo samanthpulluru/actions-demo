@@ -17,6 +17,7 @@ jobs:
       cancel-in-progress: true
     steps:
     - name: Docker hello world
+      timeout-minutes: 1 #this should timeout the workflow since there is a sleep of 10 mins below
       run: |
         sleep 600s
         docker run hello-world
