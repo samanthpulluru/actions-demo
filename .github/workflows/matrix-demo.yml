@@ -23,4 +23,5 @@ jobs:
       run: docker info
   
     - name: Docker hello world
+      if: runner.os == 'Linux'
       run: docker run ${{ matrix.images }}
